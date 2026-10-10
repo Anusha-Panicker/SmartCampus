@@ -32,6 +32,8 @@ Install the backend packages into your chosen Python environment from the reposi
 python -m pip install -r requirements.txt
 ```
 
+The backend also has `backend/requirements.txt` for deployments configured with `backend` as their service root.
+
 ## Data setup
 
 CampusIQ uses the [Open University Learning Analytics Dataset (OULAD)](https://figshare.com/articles/dataset/OULAD_Open_University_Learning_Analytics_Dataset/5081998), released under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). The citation and download metadata are also present in `data/oulad/figshare_metadata.json`.
@@ -54,7 +56,7 @@ python backend\services\integrate_data.py
 
 This creates `data/processed/student_course_analytics.csv`. The script aggregates one row per student-course-presentation, assessment measures, LMS clicks and active days, registration details, and course metadata. It computes a **proposed demo score** from 60% assessment mean and 40% cohort engagement percentile. Its academic-risk label uses an assessment-mean threshold of 40; records without assessment scores are marked as having insufficient assessment data.
 
-Raw OULAD CSVs, archives, extracted tables, and the generated processed CSV are excluded by `.gitignore`; keep local copies for running the application and do not commit them.
+The processed analytics CSV is committed so a deployment clone has the data needed by the API. Raw OULAD CSVs, archives, and extracted tables remain excluded by `.gitignore`.
 
 ### Dataset citation
 
@@ -82,7 +84,11 @@ npm ci
 npm run dev
 ```
 
-Open the local URL printed by Vite (normally <http://localhost:5173>). The frontend API client currently uses `http://127.0.0.1:8000`; the backend CORS configuration allows the local Vite ports 5173–5178.
+Open the local URL printed by Vite (normally <http://localhost:5173>). The frontend uses `VITE_API_URL` when set and otherwise defaults to `http://127.0.0.1:8000`; the backend CORS configuration allows the local Vite ports 5173–5178.
+
+### Render environment variables
+
+Configure the frontend service's `VITE_API_URL` to the deployed backend base URL (for example, `https://campusiq-api.onrender.com`). Configure the backend service's `FRONTEND_URL` to the deployed frontend origin (for example, `https://campusiq.onrender.com`, without a path). Vite reads `VITE_API_URL` at build time. The backend keeps the localhost origins enabled for local development.
 
 ### 3. Build or lint the frontend
 

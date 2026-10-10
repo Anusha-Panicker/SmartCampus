@@ -43,6 +43,7 @@ data/oulad/*.zip
 data/oulad/*.csv
 data/oulad/extracted/
 data/processed/*.csv
+!data/processed/student_course_analytics.csv
 
 # Large trained model artifacts
 backend/ml/*.joblib

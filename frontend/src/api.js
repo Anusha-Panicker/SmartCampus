@@ -1,8 +1,8 @@
 ﻿
-const API_BASE_URL = "http://127.0.0.1:8000";
+const API_BASE = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000";
 
 async function apiRequest(path) {
-  const response = await fetch(`${API_BASE_URL}${path}`);
+  const response = await fetch(`${API_BASE}${path}`);
 
   if (!response.ok) {
     throw new Error(`API request failed: ${response.status}`);
@@ -55,7 +55,7 @@ export async function calculateSuccessScore(inputs) {
   });
 
   const response = await fetch(
-    `http://127.0.0.1:8000/api/success-score?${params.toString()}`
+    `${API_BASE}/api/success-score?${params.toString()}`
   );
 
   if (!response.ok) {

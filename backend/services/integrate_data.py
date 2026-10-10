@@ -1,6 +1,7 @@
 
 import csv
 from pathlib import Path
+from bisect import bisect_right
 from collections import defaultdict
 from statistics import mean
 
@@ -156,7 +157,7 @@ def main():
     def percentile(value):
         if not sorted_clicks:
             return 0.0
-        less_equal = sum(v <= value for v in sorted_clicks)
+        less_equal = bisect_right(sorted_clicks, value)
         return round(100 * less_equal / len(sorted_clicks), 2)
 
     with OUTPUT.open("w", encoding="utf-8", newline="") as f:
