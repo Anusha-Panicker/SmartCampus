@@ -1,0 +1,29 @@
+
+:root {
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  min-width: 350px;
+  min-height: 100%;
+  background: #f6f8fb;
+}
+
+body {
+  margin: 0;
+  min-width: 350px;
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+::selection {
+  color: #234f9e;
+  background: #dce8ff;
+}

@@ -1,0 +1,342 @@
+
+/* Student 360 profile and interactive student table */
+
+.student-table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.18s ease;
+}
+
+.student-table tbody tr:hover {
+  background-color: #f1f6ff;
+}
+
+.student-table tbody tr:focus-within {
+  outline: 2px solid #3978e8;
+  outline-offset: -2px;
+}
+
+.student360 {
+  display: grid;
+  gap: 22px;
+}
+
+.student360-header,
+.student360-card {
+  background: #fff;
+  border: 1px solid #e8ebf0;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.student360-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+
+.student360-identity {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.student360-avatar {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  background: #eaf1ff;
+  color: #285dc4;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.student360 h2,
+.student360 h3 {
+  margin: 0 0 8px;
+  color: #202b3c;
+}
+
+.student360 p {
+  color: #758196;
+  margin: 5px 0;
+  line-height: 1.6;
+}
+
+.student360-back {
+  border: 1px solid #dfe5ee;
+  background: #fff;
+  color: #334155;
+  border-radius: 9px;
+  padding: 10px 15px;
+  cursor: pointer;
+  font: inherit;
+}
+
+.student360-back:hover {
+  background: #f5f7fb;
+}
+
+.student360-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.student360-metric {
+  background: #fff;
+  border: 1px solid #e8ebf0;
+  border-radius: 14px;
+  padding: 20px;
+  min-width: 0;
+}
+
+.student360-metric span {
+  display: block;
+  color: #758196;
+  font-size: 13px;
+  margin-bottom: 12px;
+}
+
+.student360-metric strong {
+  display: block;
+  color: #202b3c;
+  font-size: 25px;
+  overflow-wrap: anywhere;
+}
+
+.student360-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  border-bottom: 1px solid #e8ebf0;
+  padding-bottom: 12px;
+}
+
+.student360-tab {
+  border: 1px solid transparent;
+  border-radius: 9px;
+  padding: 10px 14px;
+  background: transparent;
+  color: #667085;
+  cursor: pointer;
+  font: inherit;
+}
+
+.student360-tab:hover {
+  background: #f5f7fb;
+}
+
+.student360-tab.active {
+  color: #285dc4;
+  background: #eaf1ff;
+  border-color: #d9e5ff;
+}
+
+.student360-table-wrap {
+  overflow-x: auto;
+}
+
+.student360-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.student360-table th,
+.student360-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #edf0f4;
+  white-space: nowrap;
+}
+
+.student360-table th {
+  color: #758196;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+
+.student360-loading,
+.student360-error,
+.student360-empty {
+  padding: 24px;
+  border-radius: 12px;
+  background: #fff;
+  color: #667085;
+  border: 1px solid #e8ebf0;
+}
+
+.student360-error {
+  color: #b42318;
+  background: #fff5f4;
+}
+
+@media (max-width: 900px) {
+  .student360-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .student360-header {
+    padding: 18px;
+  }
+
+  .student360-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .student360-metric {
+    padding: 16px;
+  }
+}
+
+/* Student 360 — layout and readability fixes */
+.student360-content {
+  min-width: 0;
+}
+
+.student360-content > * {
+  min-width: 0;
+}
+
+.student360-content .student360-section-heading {
+  margin-bottom: 20px;
+}
+
+.student360-content h2 {
+  color: #172b46;
+  letter-spacing: -0.45px;
+}
+
+.student360-content p {
+  line-height: 1.65;
+}
+
+/* Prevent profile cards from overflowing */
+.student360-content .metrics-grid,
+.student360-content .student360-metrics,
+.student360-content .student360-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  width: 100%;
+}
+
+.student360-content .metric-card,
+.student360-content .panel {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+/* Format the student record details */
+.student360-content dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+}
+
+.student360-content dl > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 18px;
+  padding: 14px 0;
+  border-bottom: 1px solid #e9eef6;
+}
+
+.student360-content dt {
+  color: #718198;
+  font-size: 13px;
+}
+
+.student360-content dd {
+  margin: 0;
+  color: #172b46;
+  font-weight: 600;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+/* Responsive profile layout */
+@media (max-width: 1100px) {
+  .student360-content .metrics-grid,
+  .student360-content .student360-metrics,
+  .student360-content .student360-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .student360-content .metrics-grid,
+  .student360-content .student360-metrics,
+  .student360-content .student360-summary-grid,
+  .student360-content dl {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .student360-content .metric-card {
+    padding: 16px;
+  }
+}
+
+/* Student 360 — structured record details */
+.student360-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 28px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.student360-detail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  min-width: 0;
+  padding: 17px 0;
+  border-bottom: 1px solid #e8edf5;
+}
+
+.student360-detail span {
+  color: #74839a;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.student360-detail strong {
+  color: #172b46;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.student360-detail:last-child,
+.student360-detail:nth-last-child(2) {
+  border-bottom: 0;
+}
+
+@media (max-width: 650px) {
+  .student360-detail-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .student360-detail {
+    padding: 13px 0;
+  }
+
+  .student360-detail:last-child,
+  .student360-detail:nth-last-child(2) {
+    border-bottom: 1px solid #e8edf5;
+  }
+
+  .student360-detail:last-child {
+    border-bottom: 0;
+  }
+}

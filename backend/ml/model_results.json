@@ -1,0 +1,99 @@
+{
+  "model": "RandomForestClassifier",
+  "dataset": "OULAD",
+  "target": "final_result",
+  "features": [
+    "num_of_prev_attempts",
+    "studied_credits",
+    "total_lms_clicks",
+    "active_lms_days",
+    "module_presentation_length",
+    "gender",
+    "region",
+    "highest_education",
+    "age_band",
+    "code_module",
+    "code_presentation"
+  ],
+  "split": "80/20 by student ID",
+  "train_records": 26073,
+  "test_records": 6520,
+  "accuracy": 0.5773,
+  "macro_f1": 0.516,
+  "classification_report": {
+    "Distinction": {
+      "precision": 0.30403458213256485,
+      "recall": 0.34590163934426227,
+      "f1-score": 0.3236196319018405,
+      "support": 610.0
+    },
+    "Fail": {
+      "precision": 0.4059259259259259,
+      "recall": 0.38920454545454547,
+      "f1-score": 0.397389412617839,
+      "support": 1408.0
+    },
+    "Pass": {
+      "precision": 0.6392067124332571,
+      "recall": 0.6739043023723361,
+      "f1-score": 0.6560970835779996,
+      "support": 2487.0
+    },
+    "Withdrawn": {
+      "precision": 0.7168284789644013,
+      "recall": 0.6595533498759305,
+      "f1-score": 0.6869992246058413,
+      "support": 2015.0
+    },
+    "accuracy": 0.5773006134969325,
+    "macro avg": {
+      "precision": 0.5164989248640373,
+      "recall": 0.5171409592617686,
+      "f1-score": 0.5160263381758801,
+      "support": 6520.0
+    },
+    "weighted avg": {
+      "precision": 0.581460318671679,
+      "recall": 0.5773006134969325,
+      "f1-score": 0.5786731829547999,
+      "support": 6520.0
+    }
+  },
+  "confusion_matrix": [
+    [
+      211,
+      30,
+      352,
+      17
+    ],
+    [
+      45,
+      548,
+      401,
+      414
+    ],
+    [
+      421,
+      296,
+      1676,
+      94
+    ],
+    [
+      17,
+      476,
+      193,
+      1329
+    ]
+  ],
+  "class_labels": [
+    "Distinction",
+    "Fail",
+    "Pass",
+    "Withdrawn"
+  ],
+  "limitations": [
+    "Retrospective classification, not a validated early-warning system.",
+    "Full-period LMS activity may not be available early in a course.",
+    "No assessment scores used as model inputs."
+  ]
+}
