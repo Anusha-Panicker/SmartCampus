@@ -26,10 +26,10 @@ CampusIQ is a prototype student analytics dashboard built around historical, ano
 - Python 3.10 or newer recommended.
 - The OULAD CSV tables described below.
 
-The repository does not currently include a Python dependency manifest. Install the backend packages into your chosen Python environment:
+Install the backend packages into your chosen Python environment from the repository root:
 
 ```powershell
-python -m pip install fastapi uvicorn pandas scikit-learn joblib
+python -m pip install -r requirements.txt
 ```
 
 ## Data setup
